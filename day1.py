@@ -12,7 +12,7 @@ units = {
     'nine':'9',
 }
 regfirst = re.compile(r'(?:(one|two|three|four|five|six|seven|eight|nine|[1-9]))')
-reglast = re.compile(r'(?:(one|two|three|four|five|six|seven|eight|nine|[1-9]))')
+reglast = re.compile(r'(?=(one|two|three|four|five|six|seven|eight|nine|[1-9]))')
 
 with open('day1.txt', newline='') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ')
