@@ -21,6 +21,7 @@ def part2():
     with open('day3.txt', newline='') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=' ')
         y=0
+        dis=0
         for row in spamreader:
             newnum=[]
             reg = re.compile("(mul\(\d+,\d+\)|don't\(\)|do\(\))")
@@ -32,9 +33,16 @@ def part2():
                 newnum[i]=newnum[i].replace('m', '')
                 newnum[i]=newnum[i].replace('u', '')
                 newnum[i]=newnum[i].replace('l', '')
-                x = str(newnum[i]).split(',')
-                y += int(x[0])*int(x[1])
-                i += 1
+                if newnum[i] == 'do':
+                    dis = 0
+                    i += 1
+                elif newnum[i] == "don't" or dis == 1:
+                    dis = 1
+                    i += 1
+                else:
+                    x = str(newnum[i]).split(',')
+                    y += int(x[0]) * int(x[1])
+                    i += 1
         print(y)
 
 part1()
